@@ -101,6 +101,32 @@ class Dashboard:
                     ]
                 ),
                 html.Br(),
+                html.Div(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    self._panel_month_sales_reports(),
+                                    width=12
+                                ),
+                            ]
+                        )
+                    ]
+                ),
+                html.Br(),
+                html.Div(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    self._panel_month_sales_count(),
+                                    width=12
+                                ),
+                            ]
+                        )
+                    ]
+                ),
+                html.Br(),
             ]
         )
 
@@ -302,6 +328,74 @@ class Dashboard:
                                         )
 
                                         for product in most_selled
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                )
+            ]
+        )
+
+    def _panel_month_sales_reports(self):
+        months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
+        month_report = DashboardController.load_month_sales_reports(2023)
+        return html.Div(
+            [
+                dbc.Card(
+                    [
+                        dbc.CardBody(
+                            [
+                                html.H3("Monthly Sales", className="card-title"),
+                                html.Br(),
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            [
+                                                dbc.Row(
+                                                    [
+                                                        html.H5(f"- {months[report['counter']]} [{report['test']} total sales]", style={"font-weight":"bold"}),
+                                                        #html.H5(f"- {product['product']} [{product['times']} time(s) sold]", style={"font-weight":"bold"}),
+                                                    ]
+                                                ),
+                                            ]
+                                        )
+
+                                        for report in month_report
+                                    ]
+                                )
+                            ]
+                        )
+                    ]
+                )
+            ]
+        )
+
+    def _panel_month_sales_count(self):
+        months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
+        month_report = DashboardController.load_month_sales_count(2023)
+        return html.Div(
+            [
+                dbc.Card(
+                    [
+                        dbc.CardBody(
+                            [
+                                html.H3("Monthly Sales Invoices Count", className="card-title"),
+                                html.Br(),
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            [
+                                                dbc.Row(
+                                                    [
+                                                        html.H5(f"- {months[report['counter']]} [{report['test']} sales]", style={"font-weight":"bold"}),
+                                                        #html.H5(f"- {product['product']} [{product['times']} time(s) sold]", style={"font-weight":"bold"}),
+                                                    ]
+                                                ),
+                                            ]
+                                        )
+
+                                        for report in month_report
                                     ]
                                 )
                             ]

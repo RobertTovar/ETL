@@ -1,5 +1,5 @@
 # se inicia con una imagen de python
-FROM python:3.8-alpine
+FROM python:3.8-buster
 
 # se crea la carpeta que contendrá el código
 RUN mkdir /dashboard
@@ -11,10 +11,10 @@ ADD . /dashboard
 WORKDIR /dashboard
 
 # se instalan dependencias complementarias de las librerias del componente
-RUN apk --no-cache add musl-dev linux-headers g++
+#RUN apk --no-cache add musl-dev linux-headers g++
 
 # se instalan las dependencias del componente
-RUN pip install -r requirements.txt
+RUN pip install --no-cache -r requirements.txt
 
 # se ejecuta el archivo principal del componente
 CMD ["python", "main.py"]

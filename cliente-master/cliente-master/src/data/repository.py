@@ -70,3 +70,13 @@ class Repository:
     def get_most_selled_products():
         response = Provider.execute(Queries.get_most_selled_products())
         return response
+
+    @staticmethod
+    def get_month_sales_reports(year):
+        response = Provider.execute(Queries.get_month_sales_reports(year))
+        return response
+
+    @staticmethod
+    def get_month_sales_count(year):
+        response = Provider.execute(Queries.get_month_sales_count(year))
+        return response

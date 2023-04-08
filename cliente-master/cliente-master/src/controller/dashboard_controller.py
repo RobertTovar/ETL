@@ -218,3 +218,45 @@ class DashboardController:
                 "times": product["times"]
             })
         return result
+
+    @staticmethod
+    def load_month_sales_reports(year):
+        counter = 1
+        response = Repository.get_month_sales_reports(year)
+        if response.status_code != 200:
+            return []
+        result = []
+        json_response = json.loads(response.text)
+
+        assert('data' in json_response.keys())
+        assert('response' in json_response['data'].keys())
+
+        for report in json_response["data"]["response"]:
+            result.append({
+                "test": report["total"+str(counter)],
+                "counter": counter
+            })
+
+            counter += 1
+        return result
+
+    @staticmethod
+    def load_month_sales_count(year):
+        counter = 1
+        response = Repository.get_month_sales_count(year)
+        if response.status_code != 200:
+            return []
+        result = []
+        json_response = json.loads(response.text)
+
+        assert('data' in json_response.keys())
+        assert('response' in json_response['data'].keys())
+
+        for report in json_response["data"]["response"]:
+            result.append({
+                "test": report["total"+str(counter)],
+                "counter": counter
+            })
+
+            counter += 1
+        return result
