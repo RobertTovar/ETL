@@ -61,6 +61,12 @@ v1.0.0 - Noviembre 2022
 - Yonathan Martinez
 - Jorge Solis
 
+## Actualizacion por
+- Roberto Tovar
+- Jonathan Carrera
+- Jan Dehuma
+- Cesar Villegas
+
 # Preguntas Frecuentes
 
 ### ¿Necesito instalar Docker?
